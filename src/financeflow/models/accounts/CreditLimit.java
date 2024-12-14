@@ -1,72 +1,78 @@
 package financeflow.models.accounts;
 
+import javafx.beans.property.*;
+
 public class CreditLimit {
-    private int id;
-    private int clientId;
-    private double creditLimit;
-    private double usedCredit;
-    private double availableCredit;
+    private final IntegerProperty id;
+    private final IntegerProperty clientId;
+    private final DoubleProperty creditLimit;
+    private final DoubleProperty usedCredit;
+    private final DoubleProperty availableCredit;
 
-    // No-arg constructor
-    public CreditLimit() {}
-
-    // Full constructor
-    public CreditLimit(int clientId, double creditLimit, double usedCredit, double availableCredit) {
-        this.clientId = clientId;
-        this.creditLimit = creditLimit;
-        this.usedCredit = usedCredit;
-        this.availableCredit = availableCredit;
+    public CreditLimit(int id, int clientId, double creditLimit, double usedCredit, double availableCredit) {
+        this.id = new SimpleIntegerProperty(id);
+        this.clientId = new SimpleIntegerProperty(clientId);
+        this.creditLimit = new SimpleDoubleProperty(creditLimit);
+        this.usedCredit = new SimpleDoubleProperty(usedCredit);
+        this.availableCredit = new SimpleDoubleProperty(availableCredit);
     }
 
-    // Getters and setters
-    public int getId() {
+    // JavaFX Property Methods
+    public IntegerProperty idProperty() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getClientId() {
+    public IntegerProperty clientIdProperty() {
         return clientId;
     }
 
-    public void setClientId(int clientId) {
-        this.clientId = clientId;
-    }
-
-    public double getCreditLimit() {
+    public DoubleProperty creditLimitProperty() {
         return creditLimit;
     }
 
-    public void setCreditLimit(double creditLimit) {
-        this.creditLimit = creditLimit;
-    }
-
-    public double getUsedCredit() {
+    public DoubleProperty usedCreditProperty() {
         return usedCredit;
     }
 
-    public void setUsedCredit(double usedCredit) {
-        this.usedCredit = usedCredit;
-    }
-
-    public double getAvailableCredit() {
+    public DoubleProperty availableCreditProperty() {
         return availableCredit;
     }
 
-    public void setAvailableCredit(double availableCredit) {
-        this.availableCredit = availableCredit;
+    // Getters and Setters
+    public int getId() {
+        return id.get();
     }
 
-    @Override
-    public String toString() {
-        return "CreditLimit{" +
-                "id=" + id +
-                ", clientId=" + clientId +
-                ", creditLimit=" + creditLimit +
-                ", usedCredit=" + usedCredit +
-                ", availableCredit=" + availableCredit +
-                '}';
+    public void setId(int id) {
+        this.id.set(id);
+    }
+
+    public int getClientId() {
+        return clientId.get();
+    }
+
+    public void setClientId(int clientId) {
+        this.clientId.set(clientId);
+    }
+
+    public double getCreditLimit() {
+        return creditLimit.get();
+    }
+
+    public void setCreditLimit(double creditLimit) {
+        this.creditLimit.set(creditLimit);
+    }
+
+    public double getUsedCredit() {
+        return usedCredit.get();
+    }
+
+    public void setUsedCredit(double usedCredit) {
+        this.usedCredit.set(usedCredit);
+        this.availableCredit.set(creditLimit.get() - usedCredit);
+    }
+
+    public double getAvailableCredit() {
+        return availableCredit.get();
     }
 }

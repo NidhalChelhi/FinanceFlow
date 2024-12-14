@@ -11,7 +11,7 @@
     <children>
         <VBox id="auth-page">
             <VBox id="welcome-section">
-                <ImageView fx:id="logoImageView" fitHeight="150" fitWidth="150">
+                <ImageView fx:id="logoImageView" fitHeight="160" fitWidth="160">
                     <image>
                         <Image url="@/resources/images/logo.png" />
                     </image>

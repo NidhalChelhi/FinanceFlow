@@ -3,41 +3,28 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml" xmlns="http://javafx.com/javafx/21.0.5"
-            fx:controller="financeflow.controllers.accounts.LoanController" stylesheets="/resources/styles/loan.css">
-    <children>
-        <VBox spacing="20" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10"
-              AnchorPane.bottomAnchor="10">
-            <!-- Title -->
-            <Label text="Gestion des Prêts" id="page-title"/>
+<VBox xmlns="http://javafx.com/javafx/21.0.5" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="financeflow.controllers.accounts.LoanController"
+      stylesheets="/resources/styles/accounts_shared.css">
+    <!-- Header -->
+    <Label text="Gérer les Prêts" id="page-header" />
 
-            <!-- Search Bar -->
-            <HBox spacing="10" alignment="CENTER_LEFT">
-                <TextField fx:id="searchField" promptText="Rechercher par client ou type de prêt..." id="search-field"/>
-                <Button text="Ajouter un prêt" onAction="#handleAddLoan" id="add-button"/>
-            </HBox>
+    <!-- Table Section -->
+    <TableView fx:id="loanTable" id="data-table">
+        <columns>
+            <TableColumn text="ID" fx:id="idColumn" />
+            <TableColumn text="Type de Prêt" fx:id="loanTypeColumn" />
+            <TableColumn text="Montant" fx:id="amountColumn" />
+            <TableColumn text="Taux d'intérêt" fx:id="interestRateColumn" />
+            <TableColumn text="Durée (mois)" fx:id="durationColumn" />
+            <TableColumn text="Statut" fx:id="statusColumn" />
+        </columns>
+    </TableView>
 
-            <!-- Table for displaying loans -->
-            <TableView fx:id="loanTable" prefHeight="400">
-                <columns>
-                    <TableColumn text="ID Prêt" fx:id="idColumn" prefWidth="100"/>
-                    <TableColumn text="Type de Prêt" fx:id="loanTypeColumn" prefWidth="150"/>
-                    <TableColumn text="Montant" fx:id="amountColumn" prefWidth="150"/>
-                    <TableColumn text="Taux d'intérêt" fx:id="interestRateColumn" prefWidth="150"/>
-                    <TableColumn text="Durée (Mois)" fx:id="durationColumn" prefWidth="150"/>
-                    <TableColumn text="Client" fx:id="clientColumn" prefWidth="150"/>
-                    <TableColumn text="Statut" fx:id="statusColumn" prefWidth="150"/>
-                </columns>
-                <placeholder>
-                    <Label text="Aucun prêt trouvé" id="table-placeholder"/>
-                </placeholder>
-            </TableView>
-
-            <!-- Action Buttons -->
-            <HBox spacing="10" alignment="CENTER_LEFT" id="action-buttons">
-                <Button text="Modifier" onAction="#handleEditLoan" id="edit-button"/>
-                <Button text="Supprimer" onAction="#handleDeleteLoan" id="delete-button"/>
-            </HBox>
-        </VBox>
-    </children>
-</AnchorPane>
+    <!-- Buttons -->
+    <HBox spacing="10">
+        <Button text="Ajouter" onAction="#handleAddLoan" id="action-button" />
+        <Button text="Modifier" onAction="#handleEditLoan" id="action-button" />
+        <Button text="Supprimer" onAction="#handleDeleteLoan" id="action-button" />
+    </HBox>
+</VBox>

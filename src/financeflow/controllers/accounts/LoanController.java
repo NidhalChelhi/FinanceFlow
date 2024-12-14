@@ -3,10 +3,11 @@ package financeflow.controllers.accounts;
 import financeflow.models.accounts.Loan;
 import financeflow.services.accounts.LoanService;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
-
-import java.util.List;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 
 public class LoanController {
 
@@ -29,21 +30,15 @@ public class LoanController {
     private TableColumn<Loan, Integer> durationColumn;
 
     @FXML
-    private TableColumn<Loan, String> clientColumn;
-
-    @FXML
     private TableColumn<Loan, String> statusColumn;
 
-    @FXML
-    private TextField searchField;
-
     private final LoanService loanService = new LoanService();
+    private ObservableList<Loan> loans;
 
     @FXML
     public void initialize() {
         initializeTableColumns();
         loadLoans();
-        setupSearch();
     }
 
     private void initializeTableColumns() {
@@ -51,35 +46,21 @@ public class LoanController {
         loanTypeColumn.setCellValueFactory(data -> data.getValue().loanTypeProperty().asString());
         amountColumn.setCellValueFactory(data -> data.getValue().amountProperty().asObject());
         interestRateColumn.setCellValueFactory(data -> data.getValue().interestRateProperty().asObject());
-        durationColumn.setCellValueFactory(data -> data.getValue().durationProperty().asObject());
-        clientColumn.setCellValueFactory(data -> data.getValue().clientNameProperty());
+        durationColumn.setCellValueFactory(data -> data.getValue().durationInMonthsProperty().asObject());
         statusColumn.setCellValueFactory(data -> data.getValue().statusProperty().asString());
     }
 
     private void loadLoans() {
-        List<Loan> loans = loanService.getAllLoans();
-        loanTable.setItems(FXCollections.observableArrayList(loans));
+        loans = FXCollections.observableArrayList(loanService.getAllLoans());
+        loanTable.setItems(loans);
     }
 
-    private void setupSearch() {
-        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
-            List<Loan> filteredLoans = loanService.searchLoans(newValue);
-            loanTable.setItems(FXCollections.observableArrayList(filteredLoans));
-        });
+    public void handleAddLoan(ActionEvent actionEvent) {
     }
 
-    @FXML
-    private void handleAddLoan() {
-        // Logic to open add loan dialog
+    public void handleEditLoan(ActionEvent actionEvent) {
     }
 
-    @FXML
-    private void handleEditLoan() {
-        // Logic to edit selected loan
-    }
-
-    @FXML
-    private void handleDeleteLoan() {
-        // Logic to delete selected loan
+    public void handleDeleteLoan(ActionEvent actionEvent) {
     }
 }

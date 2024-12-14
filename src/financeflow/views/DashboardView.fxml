@@ -13,9 +13,9 @@
             xmlns="http://javafx.com/javafx/21.0.5" fx:controller="financeflow.controllers.DashboardController"
             stylesheets="/resources/styles/dashboard.css">
 
-    <!-- Barre latérale (Gauche) -->
+    <!-- Sidebar -->
     <left>
-        <VBox id="sidebar">
+        <VBox id="sidebar" spacing="15">
             <!-- Logo -->
             <ImageView fx:id="logoImageView" fitHeight="160" fitWidth="160">
                 <image>
@@ -23,35 +23,70 @@
                 </image>
             </ImageView>
 
-            <!-- Tuiles de navigation -->
-            <VBox id="nav-item" onMouseClicked="#showAccountsPage">
-                <Text text="Comptes"/>
+            <!-- Section 1: Accounts -->
+            <VBox spacing="5">
+                <Text text="Comptes" id="section-header"/>
+                <VBox id="nav-item" onMouseClicked="#showAccountsPage">
+                    <Text text="Gérer les Comptes"/>
+                </VBox>
+                <VBox id="nav-item" onMouseClicked="#showCreditLimitsPage">
+                    <Text text="Gérer les Limites de Crédit"/>
+                </VBox>
+                <VBox id="nav-item" onMouseClicked="#showLoansPage">
+                    <Text text="Gérer les Prêts"/>
+                </VBox>
             </VBox>
 
-            <VBox id="nav-item" onMouseClicked="#showLoansPage">
-                <Text text="Prêts"/>
+            <!-- Section 2: Clients -->
+            <VBox spacing="5">
+                <Text text="Clients" id="section-header"/>
+                <VBox id="nav-item" onMouseClicked="#showClientsPage">
+                    <Text text="Gérer les Clients"/>
+                </VBox>
+                <VBox id="nav-item" onMouseClicked="#showClientInteractionsPage">
+                    <Text text="Interactions des Clients"/>
+                </VBox>
+                <VBox id="nav-item" onMouseClicked="#showClientPerformancePage">
+                    <Text text="Performance des Clients"/>
+                </VBox>
             </VBox>
 
-
-            <VBox id="nav-item" onMouseClicked="#showClientsPage">
-                <Text text="Clients"/>
+            <!-- Section 3: Transactions -->
+            <VBox spacing="5">
+                <Text text="Transactions" id="section-header"/>
+                <VBox id="nav-item" onMouseClicked="#showTransactionsPage">
+                    <Text text="Gérer les Transactions"/>
+                </VBox>
+                <VBox id="nav-item" onMouseClicked="#showTransactionAnalyticsPage">
+                    <Text text="Analyse des Transactions"/>
+                </VBox>
+                <VBox id="nav-item" onMouseClicked="#showAnalyticsDataPage">
+                    <Text text="Données d'Analyse"/>
+                </VBox>
             </VBox>
 
-            <VBox id="nav-item" onMouseClicked="#showTransactionsPage">
-                <Text text="Transactions"/>
+            <!-- Section 4: Employees -->
+            <VBox spacing="5">
+                <Text text="Employés" id="section-header"/>
+                <VBox id="nav-item" onMouseClicked="#showEmployeesPage">
+                    <Text text="Gérer les Employés"/>
+                </VBox>
+                <VBox id="nav-item" onMouseClicked="#showBranchesPage">
+                    <Text text="Branches"/>
+                </VBox>
+                <VBox id="nav-item" onMouseClicked="#showBranchPerformancePage">
+                    <Text text="Performance des Branches"/>
+                </VBox>
             </VBox>
 
-            <VBox id="nav-item" onMouseClicked="#showEmployeesPage">
-                <Text text="Employés"/>
-            </VBox>
-
+            <!-- Logout -->
             <VBox id="nav-item-logout" onMouseClicked="#handleLogout">
                 <Text text="Déconnexion"/>
             </VBox>
         </VBox>
     </left>
 
-    <!-- Zone principale (Centre) -->
+    <!-- Main Content Area -->
     <center>
         <AnchorPane fx:id="contentArea" id="main-content"/>
     </center>

@@ -7,21 +7,25 @@ import java.util.List;
 
 public class LoanService {
 
-    private final LoanDAO loanDAO = new LoanDAO();
+    private final LoanDAO loanDAO;
+
+    public LoanService() {
+        this.loanDAO = new LoanDAO();
+    }
 
     public List<Loan> getAllLoans() {
         return loanDAO.findAll();
     }
 
-    public List<Loan> searchLoans(String query) {
-        return loanDAO.searchLoans(query);
+    public Loan getLoanById(int id) {
+        return loanDAO.findById(id);
+    }
+
+    public void saveLoan(Loan loan) {
+        loanDAO.save(loan);
     }
 
     public void deleteLoan(int id) {
         loanDAO.delete(id);
-    }
-
-    public void saveLoan(Loan loan) {
-        loanDAO.insertOrUpdate(loan);
     }
 }

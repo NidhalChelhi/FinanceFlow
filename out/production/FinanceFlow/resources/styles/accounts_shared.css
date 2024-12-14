@@ -1,0 +1,73 @@
+/* Root Style */
+.root {
+    -fx-font-family: "Readex Pro";
+    -fx-background-color: white;
+    -fx-padding: 20px;
+}
+
+/* Header Section */
+#page-header {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1D3F1D; /* Dark green text */
+    -fx-padding: 10px 0;
+}
+
+/* Table Section */
+#data-table {
+    -fx-border-color: #8BA98F; /* Subtle green border */
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+#data-table .column-header {
+    -fx-font-weight: bold;
+    -fx-background-color: #C3E6C4; /* Light green background */
+    -fx-text-fill: #1D3F1D; /* Dark green text */
+}
+
+/* Form Section */
+#form-container {
+    -fx-spacing: 10px;
+    -fx-padding: 20px;
+    -fx-background-color: #F2F4F3; /* Light gray */
+    -fx-border-color: #8BA98F;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+#form-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1D3F1D;
+}
+
+#input-field {
+    -fx-padding: 5px;
+    -fx-border-color: #8BA98F;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+#action-button {
+    -fx-background-color: #C3E6C4;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+#action-button:hover {
+    -fx-background-color: #8BA98F;
+}
+
+/* Error Message */
+#error-message {
+    -fx-text-fill: red;
+    -fx-font-size: 12px;
+}

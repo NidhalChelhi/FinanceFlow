@@ -1,4 +1,5 @@
 package financeflow.controllers.auth;
+
 import financeflow.utils.NavigationUtility;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
@@ -13,20 +14,13 @@ public class LoginController {
     @FXML
     private PasswordField passwordField;
 
-
     @FXML
     private void handleLogin() {
-
-
         Stage currentStage = (Stage) emailField.getScene().getWindow();
         NavigationUtility.navigateTo(
                 "/financeflow/views/DashboardView.fxml",
                 currentStage,
                 "FinanceFlow - Dashboard"
-
         );
-
     }
-
-
 }

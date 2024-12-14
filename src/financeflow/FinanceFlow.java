@@ -24,7 +24,7 @@ public class FinanceFlow extends Application {
             stage.setOnShown(event -> centerStage(stage));
 
             // Set the title and icon
-            stage.setTitle("Ecommercia - Login");
+            stage.setTitle("FinanceFlow - Login");
             stage.getIcons().add(new Image(getClass().getResourceAsStream("/resources/images/logo-icon.png")));
 
             // Show the stage

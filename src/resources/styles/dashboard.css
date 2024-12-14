@@ -7,87 +7,71 @@
 
 /* Sidebar */
 #sidebar {
-    -fx-background-color: #EAF3FC; /* Solid light blue background */
-    -fx-spacing: 20px;
+    -fx-background-color: #c3e6c4; /* Light green background */
+    -fx-spacing: 8px; /* Reduced spacing for compact layout */
     -fx-alignment: TOP_CENTER;
-    -fx-padding: 20px 10px;
-    -fx-min-width: 250px;
-    -fx-pref-width: 250px;
-    -fx-border-radius: 25px; /* Rounded corners for the sidebar */
-    -fx-background-radius: 25px; /* Explicitly enforce rounded background */
+    -fx-padding: 10px;
+    -fx-min-width: 220px;
+    -fx-pref-width: 220px;
+    -fx-border: none;
+    -fx-background-radius: 10;
 }
 
-/* User Profile */
-#user-profile {
-    -fx-alignment: CENTER;
-    -fx-spacing: 10px;
-    -fx-padding: 20px 0;
-}
-
-
-#user-name {
-    -fx-font-size: 16px;
+/* Section Headers */
+#section-header {
+    -fx-font-size: 14px;
     -fx-font-weight: bold;
-    -fx-fill: #3A4F63; /* Neutral dark blue text */
+    -fx-fill: #1D3F1D; /* Dark green text */
+    -fx-padding: 5px 0;
 }
 
 /* Navigation Tiles */
 #nav-item, #nav-item-logout {
-    -fx-spacing: 10px;
-    -fx-alignment: CENTER;
-    -fx-padding: 15px 10px;
-    -fx-background-color: #FFFFFF; /* Solid white background for tiles */
-    -fx-border-color: #DCE3E8; /* Soft blue border */
+    -fx-spacing: 8px; /* Reduced spacing for compact tiles */
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 8px;
+    -fx-background-color: #F2F4F3; /* Light gray for contrast */
+    -fx-border-color: #8BA98F; /* Subtle darker green border */
     -fx-border-width: 1px;
-    -fx-border-radius: 20px; /* Rounded corners for tiles */
-    -fx-background-radius: 20px; /* Ensure rounded background */
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
     -fx-cursor: hand;
     -fx-min-width: 200px;
     -fx-pref-width: 200px;
-    -fx-max-width: 200px;
 }
 
 /* Hover Effect for Navigation Tiles */
 #nav-item:hover, #nav-item-logout:hover {
-    -fx-background-color: #F5F9FC; /* Slightly darker light blue on hover */
-    -fx-border-color: #B0C4DE; /* Slightly darker blue border on hover */
+    -fx-background-color: #C3E6C4; /* Brighter green on hover */
+    -fx-border-color: #8BA98F; /* Keep consistent border */
 }
 
 /* Logout Tile Specific Styling */
 #nav-item-logout {
-    -fx-background-color: #FFE5E5; /* Light red background */
-    -fx-border-color: #F5C6C6; /* Light red border */
-    -fx-border-radius: 20px; /* Matching rounded corners */
-    -fx-background-radius: 20px;
+    -fx-background-color: #F5A09E; /* Light red background */
+    -fx-border-color: #E57876; /* Matching red border */
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
 }
 
 #nav-item-logout:hover {
-    -fx-background-color: #FAD4D4; /* Slightly darker red on hover */
-    -fx-border-color: #E74C3C; /* Bold red border on hover */
-}
-
-/* Tile Content: Icon */
-#nav-item ImageView, #nav-item-logout ImageView {
-    -fx-opacity: 0.8; /* Slight transparency for icons */
-}
-
-#nav-item:hover ImageView, #nav-item-logout:hover ImageView {
-    -fx-opacity: 1; /* Full opacity on hover */
+    -fx-background-color: #E57876; /* Darker red on hover */
+    -fx-border-color: #D9534F; /* Bolder red border on hover */
 }
 
 /* Tile Content: Text */
 #nav-item Text, #nav-item-logout Text {
-    -fx-font-size: 15px; /* Slightly larger font for better readability */
+    -fx-font-size: 12px; /* Smaller font size for compact layout */
     -fx-font-weight: bold;
-    -fx-fill: #3A4F63; /* Neutral dark blue text */
+    -fx-fill: #1D3F1D; /* Dark green text */
 }
 
 /* Logout Text */
 #nav-item-logout Text {
-    -fx-fill: #E74C3C; /* Red text for logout */
+    -fx-fill: #D9534F; /* Red text for logout */
 }
 
 /* Main Content Area */
 #main-content {
-    -fx-padding: 20px;
+    -fx-padding: 15px; /* Reduced padding for compact layout */
 }

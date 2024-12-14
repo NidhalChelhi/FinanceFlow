@@ -11,20 +11,19 @@ public class Loan {
     private final DoubleProperty interestRate;
     private final IntegerProperty durationInMonths;
     private final IntegerProperty clientId;
-    private final StringProperty clientName; // Added for display
     private final ObjectProperty<LoanStatus> status;
 
-    public Loan(int id, LoanType loanType, double amount, double interestRate, int durationInMonths, int clientId, String clientName, LoanStatus status) {
+    public Loan(int id, LoanType loanType, double amount, double interestRate, int durationInMonths, int clientId, LoanStatus status) {
         this.id = new SimpleIntegerProperty(id);
         this.loanType = new SimpleObjectProperty<>(loanType);
         this.amount = new SimpleDoubleProperty(amount);
         this.interestRate = new SimpleDoubleProperty(interestRate);
         this.durationInMonths = new SimpleIntegerProperty(durationInMonths);
         this.clientId = new SimpleIntegerProperty(clientId);
-        this.clientName = new SimpleStringProperty(clientName);
         this.status = new SimpleObjectProperty<>(status);
     }
 
+    // JavaFX Property Methods
     public IntegerProperty idProperty() {
         return id;
     }
@@ -41,7 +40,7 @@ public class Loan {
         return interestRate;
     }
 
-    public IntegerProperty durationProperty() {
+    public IntegerProperty durationInMonthsProperty() {
         return durationInMonths;
     }
 
@@ -49,66 +48,61 @@ public class Loan {
         return clientId;
     }
 
-    public StringProperty clientNameProperty() {
-        return clientName;
-    }
-
     public ObjectProperty<LoanStatus> statusProperty() {
         return status;
     }
 
-    // Getters
+    // Getters and Setters
     public int getId() {
         return id.get();
+    }
+
+    public void setId(int id) {
+        this.id.set(id);
     }
 
     public LoanType getLoanType() {
         return loanType.get();
     }
 
-    public double getAmount() {
-        return amount.get();
-    }
-
-    public double getInterestRate() {
-        return interestRate.get();
-    }
-
-    public int getDurationInMonths() {
-        return durationInMonths.get();
-    }
-
-    public int getClientId() {
-        return clientId.get();
-    }
-
-    public String getClientName() {
-        return clientName.get();
-    }
-
-    public LoanStatus getStatus() {
-        return status.get();
-    }
-
-    // Setters
     public void setLoanType(LoanType loanType) {
         this.loanType.set(loanType);
+    }
+
+    public double getAmount() {
+        return amount.get();
     }
 
     public void setAmount(double amount) {
         this.amount.set(amount);
     }
 
+    public double getInterestRate() {
+        return interestRate.get();
+    }
+
     public void setInterestRate(double interestRate) {
         this.interestRate.set(interestRate);
+    }
+
+    public int getDurationInMonths() {
+        return durationInMonths.get();
     }
 
     public void setDurationInMonths(int durationInMonths) {
         this.durationInMonths.set(durationInMonths);
     }
 
-    public void setClientName(String clientName) {
-        this.clientName.set(clientName);
+    public int getClientId() {
+        return clientId.get();
+    }
+
+    public void setClientId(int clientId) {
+        this.clientId.set(clientId);
+    }
+
+    public LoanStatus getStatus() {
+        return status.get();
     }
 
     public void setStatus(LoanStatus status) {

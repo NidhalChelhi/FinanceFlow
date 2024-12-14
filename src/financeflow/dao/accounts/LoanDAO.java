@@ -13,11 +13,7 @@ public class LoanDAO {
 
     public List<Loan> findAll() {
         List<Loan> loans = new ArrayList<>();
-        String query = """
-                SELECT l.*, c.name AS client_name
-                FROM loans l
-                JOIN clients c ON l.client_id = c.id
-                """;
+        String query = "SELECT * FROM loans";
 
         try (Connection connection = DatabaseUtility.getConnection();
              PreparedStatement statement = connection.prepareStatement(query);
@@ -33,33 +29,25 @@ public class LoanDAO {
         return loans;
     }
 
-    public List<Loan> searchLoans(String query) {
-        List<Loan> loans = new ArrayList<>();
-        String sql = """
-                SELECT l.*, c.name AS client_name
-                FROM loans l
-                JOIN clients c ON l.client_id = c.id
-                WHERE c.name LIKE ? OR l.loan_type LIKE ?
-                """;
-
+    public Loan findById(int id) {
+        String query = "SELECT * FROM loans WHERE id = ?";
         try (Connection connection = DatabaseUtility.getConnection();
-             PreparedStatement statement = connection.prepareStatement(sql)) {
+             PreparedStatement statement = connection.prepareStatement(query)) {
 
-            statement.setString(1, "%" + query + "%");
-            statement.setString(2, "%" + query + "%");
+            statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
 
-            while (resultSet.next()) {
-                loans.add(mapResultSetToLoan(resultSet));
+            if (resultSet.next()) {
+                return mapResultSetToLoan(resultSet);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return loans;
+        return null;
     }
 
-    public void insertOrUpdate(Loan loan) {
+    public void save(Loan loan) {
         String query = loan.getId() == 0
                 ? "INSERT INTO loans (loan_type, amount, interest_rate, duration_months, client_id, status) VALUES (?, ?, ?, ?, ?, ?)"
                 : "UPDATE loans SET loan_type = ?, amount = ?, interest_rate = ?, duration_months = ?, client_id = ?, status = ? WHERE id = ?";
@@ -73,6 +61,7 @@ public class LoanDAO {
             statement.setInt(4, loan.getDurationInMonths());
             statement.setInt(5, loan.getClientId());
             statement.setString(6, loan.getStatus().name());
+
             if (loan.getId() != 0) {
                 statement.setInt(7, loan.getId());
             }
@@ -85,7 +74,6 @@ public class LoanDAO {
 
     public void delete(int id) {
         String query = "DELETE FROM loans WHERE id = ?";
-
         try (Connection connection = DatabaseUtility.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
 
@@ -104,7 +92,6 @@ public class LoanDAO {
                 resultSet.getDouble("interest_rate"),
                 resultSet.getInt("duration_months"),
                 resultSet.getInt("client_id"),
-                resultSet.getString("client_name"),
                 LoanStatus.valueOf(resultSet.getString("status"))
         );
     }

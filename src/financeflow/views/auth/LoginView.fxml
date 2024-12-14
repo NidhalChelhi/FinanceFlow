@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21.0.5"
+            fx:controller="financeflow.controllers.auth.LoginController"
+            stylesheets="/resources/styles/auth.css">
+
+    <children>
+        <VBox id="auth-page">
+            <VBox id="welcome-section">
+                <ImageView fx:id="logoImageView" fitHeight="150" fitWidth="150">
+                    <image>
+                        <Image url="@/resources/images/logo.png" />
+                    </image>
+                </ImageView>
+                <Label text="Bienvenue" id="welcome-title" />
+                <Label text="Connectez-vous pour gérer votre banque" id="welcome-subtitle" />
+            </VBox>
+
+            <VBox id="form-container">
+                <Label text="Connectez-vous à votre compte" id="form-title" />
+                <TextField fx:id="emailField" promptText="Entrez votre email" id="input-field" />
+                <PasswordField fx:id="passwordField" promptText="Entrez votre mot de passe" id="input-field" />
+                <Button text="Se connecter" fx:id="loginButton" id="action-button" onAction="#handleLogin" />
+                <HBox id="link-section">
+                    <Hyperlink text="Mot de passe oublié ?" id="link" />
+                    <Label text="|" />
+                    <Hyperlink text="Créer un compte" id="link" />
+                </HBox>
+                <Label fx:id="errorLabel" text="" id="error-message" />
+            </VBox>
+        </VBox>
+    </children>
+</AnchorPane>
